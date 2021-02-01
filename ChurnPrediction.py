@@ -81,11 +81,18 @@ classifier.add(Dense(units=1, activation = 'sigmoid', kernel_initializer='unifor
 # Compiling the ANN
 classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
+# Training our model
+classifier.fit(X_train, y_train, batch_size=10, epochs=100)
 
+# Predition on X_test
 
+y_pred = classifier.predict(X_test)
+y_pred = (y_pred > 0.5)
 
+# Confusion_metrix
+from sklearn.metrics import confusion_matrix
 
-
+cm = confusion_matrix(y_test, y_pred)
 
 
 
